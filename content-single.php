@@ -45,6 +45,8 @@
 
 		<div class="entry-content">
 			<?php the_content(); ?>
+			<p><strong>Project Tags:</strong></p>
+			<?php the_terms($post->ID, 'jetpack-portfolio-tag'); ?>
 			<?php
 				wp_link_pages( array(
 					'before'            => '<div class="page-links">' . esc_html__( 'Pages:', 'sparkling' ),
@@ -62,13 +64,10 @@
 			<?php if ( has_tag() ) : ?>
 		  <!-- tags -->
 		  <div class="tagcloud">
-
-				<?php
-				  $tags = get_the_tags( get_the_ID() );
+                $tags = get_the_tags( get_the_ID() );
 				foreach ( $tags as $tag ) {
 					echo '<a href="' . get_tag_link( $tag->term_id ) . '">' . $tag->name . '</a> ';
-				} ?>
-
+				}
 		  </div>
 		  <!-- end tags -->
 			<?php endif; ?>
